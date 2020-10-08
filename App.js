@@ -1,21 +1,29 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import HomeScreen from "./src/screens/HomeScreen";
+import FacultyListScreen from "./src/screens/FacultyListScreen";
+import ProfileScreen from "./src/screens/ProfileScreen";
+import SemesterScreen from "./src/screens/SemesterScreen";
+import FirstSemesterScreen from "./src/screens/FirstSemesterScreen";
+import SecondSemesterScreen from "./src/screens/SecondSemesterScreen";
+import ThirdSemesterScreen from "./src/screens/ThirdSemesterScreen";
+const stack = createStackNavigator();
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+function App() {
+    return (
+        <NavigationContainer>
+            <stack.Navigator initialRouteName="Home">
+                <stack.Screen name="Home" component={HomeScreen} />
+                <stack.Screen name="Faculty Members" component={FacultyListScreen} />
+                <stack.Screen name="Profile" component={ProfileScreen} />
+                <stack.Screen name="Semesters" component={SemesterScreen} />
+                <stack.Screen name="1st Semester" component={FirstSemesterScreen} />
+                <stack.Screen name="2nd Semester" component={SecondSemesterScreen} />
+                <stack.Screen name="3rd Semester" component={ThirdSemesterScreen} />        
+            </stack.Navigator>
+        </NavigationContainer>
+    );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
